@@ -10,7 +10,7 @@ export default function Navigation() {
         <NavLink style={linkStyle} to="/">
           Mikro LMS
         </NavLink>
-        <span>(Ole Hansen(Admin))</span>
+        <span>Ole Hansen (Admin)</span>
       </h1>
       <ul data-testid="nav">
         <li data-testid="nav_courses">

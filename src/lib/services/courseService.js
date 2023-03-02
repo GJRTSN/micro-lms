@@ -18,7 +18,6 @@ export const getCourses = async () => {
     *[_type == "course"]{${courseFields}}`)
     return data
   } catch (error) {
-    // Sender feilmelding tilbake om noe går galt
     throw new Error(error)
   }
 }

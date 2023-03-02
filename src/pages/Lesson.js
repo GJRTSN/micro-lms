@@ -1,8 +1,7 @@
+import { useState, useEffect } from 'react'
 import { Link, useOutletContext, useParams } from 'react-router-dom'
 import Lessons from '../components/Lessons'
-import { useState, useEffect } from 'react'
-import { createComment } from '../lib/services/commentService'
-import { getComments } from '../lib/services/commentService'
+import { createComment, getComments } from '../lib/services/commentService'
 
 export default function Lesson() {
   const [name, setName] = useState('')
@@ -70,22 +69,23 @@ export default function Lesson() {
 
   // Antall kommentarer
   let commentLength = 0
-  comments &&
-    comments?.map((comment) =>
+  if (comments) {
+    comments.map((comment) =>
       comment.lessonSlug === lessonSlug ? (commentLength += 1) : null
     )
+  }
 
   return (
     <div>
       <div id="lessonIntro">
         <h3 data-testid="course_title">
-          <Link to={currentCourseLink}>{currentCourse[0]?.title}</Link>
+          <Link to={currentCourseLink}>{currentCourse[0]?.title || ''}</Link>
         </h3>
         <span data-testid="course_category">
           Kategori:{' '}
           <span>
-            {currentCourse[0]?.category.charAt(0).toUpperCase() +
-              currentCourse[0]?.category.slice(1)}
+            {(currentCourse[0]?.category || '').charAt(0).toUpperCase() +
+              (currentCourse[0]?.category || '').slice(1)}
           </span>
         </span>
       </div>
@@ -132,8 +132,9 @@ export default function Lesson() {
           >
             Legg til kommentar
           </button>
-
-          <p id="formError" data-testid="form_error"></p>
+          <span id="formError" data-testid="form_error">
+            {' '}
+          </span>
 
           {sent.showMessage && (
             <p id="formSuccess" data-testid="form_success">

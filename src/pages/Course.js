@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import { useParams, NavLink, Outlet } from 'react-router-dom'
 import { getUsers } from '../lib/services/userService'
-import { useEffect, useState } from 'react'
 import { getCourses } from '../lib/services/courseService'
 
 export default function Course() {

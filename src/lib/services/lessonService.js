@@ -5,7 +5,6 @@ export const getLessons = async () => {
     const data = await client.fetch(`*[_type == "lesson"]`)
     return data
   } catch (error) {
-    // Sender feilmelding tilbake om noe går galt
     throw new Error(error)
   }
 }
