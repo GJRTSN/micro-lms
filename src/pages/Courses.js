@@ -32,7 +32,7 @@ export default function Courses() {
       <header>
         <h2 data-testid="title">Alle kurs</h2>
         <label htmlFor="filter">
-          <span>Velg kategori:</span>
+          <span>Velg kategori: </span>
           <select
             onChange={handleCategoryChange}
             id="filter"
